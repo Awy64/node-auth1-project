@@ -1,11 +1,12 @@
 
 exports.up = function(knex) {
-  knex.schema.createTable('users', tbl => {
+  return knex.schema.createTable('users', tbl => {
+    tbl.increments('id');
     tbl.string('username').unique();
-    tbl.string('pasword');
+    tbl.string('password');
   })
 };
 
 exports.down = function(knex) {
-  knex.schema.DropTableIfExists("users")
+  return knex.schema.dropTableIfExists("users")
 };
